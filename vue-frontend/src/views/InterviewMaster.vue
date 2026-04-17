@@ -6,7 +6,7 @@
     <header class="studio-header">
       <button class="back-btn" @click="goBack">返回首页</button>
       <div class="title-wrap">
-        <h1>AI 模拟面试官</h1>
+        <h1>AI 面试官</h1>
         <p>会话 ID：{{ chatId || "生成中" }}</p>
       </div>
       <div class="status-chip" :class="connectionStatus">
@@ -33,12 +33,12 @@ import ChatRoom from "../components/ChatRoom.vue";
 import { chatWithLoveApp } from "../api";
 
 useHead({
-  title: "AI面试助手 - 大鱼AI超级智能体应用平台",
+  title: "AI面试助手",
   meta: [
     {
       name: "description",
       content:
-        "AI面试助手是大鱼AI超级智能体应用平台的专业面试助手，帮你解答各种面试问题，提供面试问题回答",
+        "AI面试助手是超级智能体应用平台的专业面试助手，帮你解答各种面试问题，提供面试问题回答",
     },
   ],
 });
@@ -119,7 +119,7 @@ const goBack = () => {
 onMounted(() => {
   chatId.value = generateChatId();
   addMessage(
-    "我是你的 AI 面试官，请按你的经验年限和目标岗位描述背景，我会给你定制化模拟与复盘。",
+    "我是你的 AI 面试官，请上传你的简历，我来帮你解析。",
     false
   );
 });

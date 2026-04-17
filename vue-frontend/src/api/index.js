@@ -1,11 +1,8 @@
 import axios from 'axios'
 
-// 根据环境变量设置 API 基础 URL
-// const API_BASE_URL = process.env.NODE_ENV === 'production'
-//   ? '/api' // 生产环境使用相对路径，适用于前后端部署在同一域名下
-//   : 'http://localhost:8123/api'
-//: 'http://bear-ai1.natapp1.cc/api' // 开发环境指向本地后端服务
-const API_BASE_URL = '/api'
+// 优先读取 Vercel/Vite 环境变量，兜底为同域 /api
+// 例如：VITE_API_BASE_URL=https://api.example.com/api
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
 // 创建axios实例
 const request = axios.create({

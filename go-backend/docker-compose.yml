@@ -16,9 +16,9 @@ services:
   postgres:
     image: ankane/pgvector
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: Yc+-2613972
-      POSTGRES_DB: dayu_ai_agent
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     expose:
       - "5432"
     volumes:
@@ -27,7 +27,7 @@ services:
     networks:
       - ai-agent-network
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U root -d dayu_ai_agent" ]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -49,6 +49,27 @@ services:
     environment:
       GO111MODULE: "on"
       GOPROXY: "https://goproxy.cn,direct"
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL}
+      OPENAI_MODEL: ${OPENAI_MODEL}
+      OPENAI_MAX_TOKENS: ${OPENAI_MAX_TOKENS}
+      OPENAI_TEMPERATURE: ${OPENAI_TEMPERATURE}
+      VECTOR_DB_HOST: ${VECTOR_DB_HOST}
+      VECTOR_DB_PORT: ${VECTOR_DB_PORT}
+      VECTOR_DB_NAME: ${VECTOR_DB_NAME}
+      VECTOR_DB_USER: ${VECTOR_DB_USER}
+      VECTOR_DB_PASSWORD: ${VECTOR_DB_PASSWORD}
+      VECTOR_DB_TABLE: ${VECTOR_DB_TABLE}
+      VECTOR_DB_MAX_CONN: ${VECTOR_DB_MAX_CONN}
+      VECTOR_DB_EMBEDDING_MODEL: ${VECTOR_DB_EMBEDDING_MODEL}
+      VECTOR_DB_KNOWLEDGE_MAX_CHUNK_SIZE: ${VECTOR_DB_KNOWLEDGE_MAX_CHUNK_SIZE}
+      VECTOR_DB_KNOWLEDGE_TOP_K: ${VECTOR_DB_KNOWLEDGE_TOP_K}
+      VECTOR_DB_KNOWLEDGE_MAX_CONTEXT_LENGTH: ${VECTOR_DB_KNOWLEDGE_MAX_CONTEXT_LENGTH}
+      MCP_ENDPOINT: ${MCP_ENDPOINT}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_DB: ${REDIS_DB}
 
   # 4. 前端服务
   frontend:

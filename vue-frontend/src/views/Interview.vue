@@ -33,12 +33,12 @@ import ChatRoom from "../components/ChatRoom.vue";
 import { chatWithManus } from "../api";
 
 useHead({
-  title: "AI超级智能体 - 大鱼AI超级智能体应用平台",
+  title: "AI面试超级智能体",
   meta: [
     {
       name: "description",
       content:
-        "AI超级智能体是大鱼AI超级智能体应用平台的全能助手，能解答各类专业问题，提供精准建议和解决方案",
+        "AI面试超级智能体是超级智能体应用平台的全能助手，能解答各类专业问题，提供精准建议和解决方案",
     },
   ],
 });

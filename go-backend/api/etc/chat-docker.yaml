@@ -5,31 +5,31 @@ Port: 8123
 Timeout: 0
 
 OpenAI:
-  ApiKey: "sk-96f10ba7e8db41c4a45bf2908401bafb"
-  BaseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  Model: "qwen-plus"
-  MaxTokens: 2048
-  Temperature: 0.7
+  ApiKey: "${OPENAI_API_KEY}"
+  BaseURL: "${OPENAI_BASE_URL}"
+  Model: "${OPENAI_MODEL}"
+  MaxTokens: ${OPENAI_MAX_TOKENS}
+  Temperature: ${OPENAI_TEMPERATURE}
 
 VectorDB:
-  Host: "postgres"  # 使用Docker服务名
-  Port: 5432
-  DBName: "dayu_ai_agent"
-  User: "root"
-  Password: "Yc+-2613972"
-  Table: "vector_store"
-  MaxConn: 20
-  EmbeddingModel: "text-embedding-v1"
+  Host: "${VECTOR_DB_HOST}"  # 使用Docker服务名
+  Port: ${VECTOR_DB_PORT}
+  DBName: "${VECTOR_DB_NAME}"
+  User: "${VECTOR_DB_USER}"
+  Password: "${VECTOR_DB_PASSWORD}"
+  Table: "${VECTOR_DB_TABLE}"
+  MaxConn: ${VECTOR_DB_MAX_CONN}
+  EmbeddingModel: "${VECTOR_DB_EMBEDDING_MODEL}"
   Knowledge:
-    MaxChunkSize: 1000
-    TopK: 3
-    MaxContextLength: 500
+    MaxChunkSize: ${VECTOR_DB_KNOWLEDGE_MAX_CHUNK_SIZE}
+    TopK: ${VECTOR_DB_KNOWLEDGE_TOP_K}
+    MaxContextLength: ${VECTOR_DB_KNOWLEDGE_MAX_CONTEXT_LENGTH}
 
 MCP:
-  Endpoint: "/app/doc-processor"  # Docker内的二进制路径
+  Endpoint: "${MCP_ENDPOINT}"  # Docker内的二进制路径
 
 Redis:
-  Host: "redis"  # 使用Docker服务名
-  Port: 6379
-  Password: ""
-  DB: 0
+  Host: "${REDIS_HOST}"  # 使用Docker服务名
+  Port: ${REDIS_PORT}
+  Password: "${REDIS_PASSWORD}"
+  DB: ${REDIS_DB}

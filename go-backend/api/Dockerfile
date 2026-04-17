@@ -31,9 +31,11 @@ COPY --from=api-builder /output/api /app/api
 # 复制配置
 RUN mkdir -p /app/etc
 COPY --from=api-builder /build/api/etc/chat-docker.yaml /app/etc/chat.yaml
+COPY --from=api-builder /build/api/etc/chat-docker.yaml /app/etc/chat.yaml.template
+COPY --from=api-builder /build/api/entrypoint.sh /app/entrypoint.sh
 
 # 设置执行权限
-RUN chmod +x /app/doc-processor /app/api
+RUN chmod +x /app/doc-processor /app/api /app/entrypoint.sh
 
 WORKDIR /app
-CMD ["./api", "-f", "etc/chat.yaml"]
+CMD ["/app/entrypoint.sh"]
