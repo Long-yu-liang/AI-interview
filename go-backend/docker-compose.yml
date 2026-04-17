@@ -1,0 +1,74 @@
+services:
+  # 1. Redis服务
+  redis:
+    image: redis:alpine
+    expose:
+      - "6379"
+    networks:
+      - ai-agent-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. PostgreSQL数据库
+  postgres:
+    image: ankane/pgvector
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Yc+-2613972
+      POSTGRES_DB: dayu_ai_agent
+    expose:
+      - "5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - ai-agent-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U root -d dayu_ai_agent" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 3. API服务 (内置 DocProcessor MCP Tool)
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8123:8123"
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - ai-agent-network
+    environment:
+      GO111MODULE: "on"
+      GOPROXY: "https://goproxy.cn,direct"
+
+  # 4. 前端服务
+  frontend:
+    build:
+      context: ../vue-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      api:
+        condition: service_started
+    networks:
+      - ai-agent-network
+
+# 网络定义
+networks:
+  ai-agent-network:
+    driver: bridge
+    name: ai-agent-network
+
+# 数据卷定义
+volumes:
+  postgres-data:

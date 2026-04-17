@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+.qoder/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Frontend build output
+vue-frontend/dist/
+vue-frontend/coverage/
+
+# Local env files
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Go build artifacts
+*.exe
+*.out
+*.test
+*.prof
+
+# Docker volumes/local data
+postgres-data/
