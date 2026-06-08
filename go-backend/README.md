@@ -1,10 +1,10 @@
 # Gozero+AI面试助手智能体（后端）
 
 ## AI面试助手智能体 - 在线体验
-- [在线体验](http://aigo.dayu.club/)
 ## 代码仓库
-- [前端代码仓库](https://codeup.aliyun.com/60fadd729187b7df39056384/training_camp/frontend-ai-interview-agent-go)
-- [后端代码仓库](https://codeup.aliyun.com/60fadd729187b7df39056384/training_camp/ai-gozero-agent)
+
+- 前端: `vue-frontend/`
+- 后端: `go-backend/`
 
 ## 技术架构
 
@@ -82,7 +82,4 @@ npm run build
 ### 如何扩展知识库？
 调用`/knowledge`接口上传专业文档，系统将自动向量化存储。
 
-## 更多项目
->除了这个项目，我们还有其他 [更多优质项目](http://wangzhongyang.com/project/go/)。\
-如果你需要[「辅导到就业为止的就业陪跑」](https://mp.weixin.qq.com/s/xi_uYjMzPjjCcMZ3UodE3g)，也欢迎了解我们的  [就业陪跑训练营](https://mp.weixin.qq.com/s/PawAjcqvSH8riPmAdVgiUw)
 =======

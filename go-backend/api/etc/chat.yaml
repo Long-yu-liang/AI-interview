@@ -16,7 +16,7 @@ OpenAI:
 VectorDB:
   Host: "127.0.0.1"
   Port: 5432
-  DBName: "dayu_ai_agent"
+  DBName: "ai_interview"
   User: "root"
   Password: "Yc+-2613972"
   Table: "vector_store"

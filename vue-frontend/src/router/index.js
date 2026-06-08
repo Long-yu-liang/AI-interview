@@ -33,8 +33,8 @@ const routes = [
   //   name: 'SuperAgent',
   //   component: () => import('../views/SuperAgent.vue'),
   //   meta: {
-  //     title: 'AI超级智能体 - 大鱼AI超级智能体应用平台',
-  //     description: 'AI超级智能体是大鱼AI超级智能体应用平台的全能助手，能解答各类专业问题，提供精准建议和解决方案'
+  //     title: 'AI超级智能体 - AI面试官智能体应用平台',
+  //     description: 'AI超级智能体是AI面试官智能体应用平台的全能助手，能解答各类专业问题，提供精准建议和解决方案'
   //   }
   // }
 ]
